@@ -3,18 +3,19 @@ from selenium.webdriver.chrome.options import Options
 from time import sleep
 import os
 
+
 def getLinkfromYoutube(nameOfVideo):
     #init
     global driver
     
     #options
     settings = Options()
-    #settings.binary_location = os.environ.get('GOOGLE_CHROME_BIN')
+    settings.binary_location = os.environ.get('GOOGLE_CHROME_BIN')
     settings.add_argument('--disable-dev-shm-usage')
     settings.add_argument('--headless')
     settings.add_argument('--no-sandbox')
     settings.add_experimental_option("detach", True)
-    chrome_path = "Path/to/chromedriver" #os.environ.get('CHROMEDRIVER_PATH')
+    chrome_path = os.environ.get('CHROMEDRIVER_PATH') or "path/to/chromedriver"
 
     driver = webdriver.Chrome(chrome_options=settings, executable_path=chrome_path)
     driver.get(f'https://www.youtube.com/results?search_query={nameOfVideo}')
