@@ -3,3 +3,4 @@ venv
 .idea
 .vscode
 dependencies
+*.mp3
