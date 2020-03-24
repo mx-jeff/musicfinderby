@@ -1,1 +1,1 @@
-web: gunicorn musicfinderby:app
+web: gunicorn index:app
