@@ -6,7 +6,7 @@ from robots.reponseMusicRobot import returnMusic
 
 
 def downloadToYoutube(music):
-    #clearAudio()
+    clearAudio()
     video = str(music)
     link = getLinkfromYoutube(video)
     downloadAndConvertToMp3VideosFromYoutube(link)

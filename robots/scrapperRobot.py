@@ -15,7 +15,7 @@ def getLinkfromYoutube(nameOfVideo):
     settings.add_argument('--headless')
     settings.add_argument('--no-sandbox')
     settings.add_experimental_option("detach", True)
-    chrome_path = os.environ.get('CHROMEDRIVER_PATH') or "path/to/chromedriver"
+    chrome_path = os.environ.get('CHROMEDRIVER_PATH') or "C:/Selenium/chromedriver.exe"
 
     driver = webdriver.Chrome(chrome_options=settings, executable_path=chrome_path)
     driver.get(f'https://www.youtube.com/results?search_query={nameOfVideo}')

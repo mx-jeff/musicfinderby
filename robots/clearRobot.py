@@ -3,4 +3,9 @@ import shutil
 
 
 def clearAudio():
-    os.remove(os.path.join('audio','.'))
+    target = "audio"
+    files = os.listdir(target)
+
+    for item in files:
+        if item.endswith(".mp3"):
+            os.remove(os.path.join(target, item))
