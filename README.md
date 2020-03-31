@@ -12,7 +12,9 @@ Programa que extrai videos para transforma-los em MP3
 ```python
     python -m venv venv    
 ```
-    Com FFMpeg baixado, extraia os arquivos, copie os arquivos da pasta Bin
+    Com FFMpeg baixado, extraia os arquivos, copie os arquivos da pasta /Bin para dentro da pasta venv/scripts, que esta
+    localizada dentro do seu diretório
+    
 
 ## Execução
  - Após relizada instalação, execute esse comandos no prompt/terminal

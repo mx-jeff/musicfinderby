@@ -21,7 +21,7 @@ def loadMusic(music):
     '''
     filename = downloadToYoutube(music)
     
-    return send_file(filename, as_attachment=True, cache_timeout=0)
+    return send_file(filename, as_attachment=True, cache_timeout=-1)
 
 
 if __name__ == "__main__":

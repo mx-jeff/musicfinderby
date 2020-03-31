@@ -2,5 +2,9 @@ import os
 
 
 def returnMusic():
-    filename = os.listdir(os.path.join('audio', '.'))
-    return os.path.join('audio', filename[0])
+    filename = ''
+    for file in os.listdir('audio'):
+        if file.endswith('.mp3'):
+            filename = os.path.join('audio', file)
+
+    return filename
