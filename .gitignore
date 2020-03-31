@@ -4,3 +4,4 @@ venv
 .vscode
 dependencies
 *.mp3
+.ngrok.exe
