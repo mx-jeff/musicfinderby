@@ -1,9 +1,10 @@
 from controllers.downloadController import downloadToYoutube
 from flask import Flask, send_file, url_for, redirect, request
 from controllers.searchController import searchUrl
+from flask_cors import CORS
 
 app = Flask(__name__)
-
+CORS(app)
 
 @app.route('/')
 def index():
@@ -36,7 +37,7 @@ def loadMusic():
     targetLink = request.args.get('url')
     filename = downloadToYoutube(targetLink)
     
-    return send_file(filename, as_attachment=True, cache_timeout=-1)
+    return send_file(filename, as_attachment=True, mimetype='audio/mpeg', cache_timeout=-1)
 
 
 if __name__ == "__main__":
