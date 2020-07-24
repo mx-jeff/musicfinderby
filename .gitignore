@@ -5,3 +5,4 @@ venv
 dependencies
 *.mp3
 .ngrok.exe
+frontend

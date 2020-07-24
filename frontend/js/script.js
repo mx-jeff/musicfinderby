@@ -7,5 +7,6 @@ const status = document.querySelector('footer')
 search.addEventListener('submit', e => {
     e.preventDefault()
     status.textContent = 'Aguarde...'
-    api(musica.value)
+    const data = api(musica.value)
+    console.log(data)
 })
