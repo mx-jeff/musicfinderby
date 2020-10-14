@@ -9,5 +9,5 @@ def downloadToYoutube(link):
     print('DONE! file downloaded')
     print('moving file...')
     moveFile()
-    prin('Done! file moved')
+    print('Done! file moved')
     return returnMusic()
