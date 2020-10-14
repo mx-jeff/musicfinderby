@@ -4,6 +4,10 @@ from robots.reponseMusicRobot import returnMusic
 
 
 def downloadToYoutube(link):
+    print('Downloading file...')
     downloadAndConvertToMp3VideosFromYoutube(link)
+    print('DONE! file downloaded')
+    print('moving file...')
     moveFile()
+    prin('Done! file moved')
     return returnMusic()
