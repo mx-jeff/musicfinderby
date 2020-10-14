@@ -3,7 +3,7 @@ from robots.scrapperRobot import getLinkfromYoutube
 
 
 def searchUrl(music):
-    clearAudio()
+    # clearAudio()
     video = str(music)
     link = getLinkfromYoutube(video)
     return link
