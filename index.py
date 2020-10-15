@@ -37,7 +37,7 @@ def loadMusic():
     targetLink = request.args.get('url')
     filename = downloadToYoutube(targetLink)
 
-    # add app in path do get file
+    # find where the file is it
     try:
         return send_file(filename, as_attachment=True, mimetype='audio/mpeg', cache_timeout=-1)
 

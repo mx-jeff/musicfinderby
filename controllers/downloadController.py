@@ -9,7 +9,7 @@ def downloadToYoutube(link):
     downloadAndConvertToMp3VideosFromYoutube(link)
     print('[DONE] file downloaded')
     print('moving file...')
-    music = os.listdir('.')
+    music = os.listdir('./audio')
     print(f'[FILE] {music}')
     moveFile()
     print('[DONE] file moved')
