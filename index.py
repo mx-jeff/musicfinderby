@@ -37,14 +37,16 @@ def loadMusic():
     targetLink = request.args.get('url')
     filename = downloadToYoutube(targetLink)
 
-    if filename == '':
-        return f"[ERRO] Aquivo não baixado! Tente novamente" 
-
-    print('DONE!, Sending your file...')
-
     # add app in path do get file
+    try:
+        return send_file(filename, as_attachment=True, mimetype='audio/mpeg', cache_timeout=-1)
+
+    except Exception as error:
+        print(error)
+        return f"[ERRO] Aquivo não baixado! Tente novamente"
     
-    return send_file(filename, as_attachment=True, mimetype='audio/mpeg', cache_timeout=-1)
+    else:
+        print('DONE!, Sending your file...')
 
 if __name__ == "__main__":
     app.run()
