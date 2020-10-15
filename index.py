@@ -36,7 +36,7 @@ def loadMusic():
     '''
     targetLink = request.args.get('url')
     filename = downloadToYoutube(targetLink)
-    print('[FILE] 'filename)
+    print('[FILE] ', filename)
 
     print('DONE!, Sending your file...')
 
