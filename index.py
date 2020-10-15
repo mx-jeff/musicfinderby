@@ -36,7 +36,9 @@ def loadMusic():
     '''
     targetLink = request.args.get('url')
     filename = downloadToYoutube(targetLink)
-    print('[FILE] ', filename)
+
+    if file == Null:
+        return "<h1>[ERRO] Aquivo não baixado!</h1>"
 
     print('DONE!, Sending your file...')
 
