@@ -36,10 +36,12 @@ def loadMusic():
     '''
     targetLink = request.args.get('url')
     filename = downloadToYoutube(targetLink)
-    
-    print('DONE!, Sending your file...')
-    return send_file(filename, as_attachment=True, mimetype='audio/mpeg', cache_timeout=-1)
+    print(filename)
 
+    print('DONE!, Sending your file...')
+
+    # add app in path do get file
+    return send_file(filename, as_attachment=True, mimetype='audio/mpeg', cache_timeout=-1)
 
 if __name__ == "__main__":
     app.run()
