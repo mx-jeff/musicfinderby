@@ -44,7 +44,8 @@ def loadMusic():
         return send_file(filename, as_attachment=True, mimetype='audio/mpeg', cache_timeout=-1)
 
     except Exception as error:
-        return f"<h1>[ERRO] Aquivo não baixado!</h1><p>Erro: {error}</p>"
+        print(error)
+        return f"[ERRO] Aquivo não baixado! Tente novamente"
 
 if __name__ == "__main__":
     app.run()
