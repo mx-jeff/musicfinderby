@@ -20,7 +20,7 @@ def getLinkfromYoutube(nameOfVideo):
     driver = webdriver.Chrome(chrome_options=settings, executable_path=chrome_path)
 
     driver.get(f'https://www.youtube.com/results?search_query={nameOfVideo}')
-    sleep(5)
+    sleep(10)
 
     #click on video
     video = driver.find_element_by_xpath('//*[@id="dismissable"]')
