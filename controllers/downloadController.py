@@ -6,7 +6,6 @@ import os
 
 dev = False
 
-
 def downloadToYoutube(link):
     print('Downloading file...')
     downloadAndConvertToMp3VideosFromYoutube(link)
