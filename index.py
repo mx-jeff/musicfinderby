@@ -6,12 +6,13 @@ from flask_cors import CORS
 app = Flask(__name__)
 CORS(app)
 
+
 @app.route('/')
 def index():
-    return "Welcome!"
+    return "Welcome! Use the '/search/' and type the name of your music or type '/download/' if you have the youtube link "
 
 
-@app.route('/s/<string:music>')
+@app.route('/search/<string:music>')
 def searchMusic(music):
     '''
     => search music's link on youtube and call "loadMusic" to download then
@@ -21,10 +22,11 @@ def searchMusic(music):
     :return: target video url
     '''
     url = searchUrl(music)
+    print(url)
     return redirect(url_for("loadMusic", url=url))
 
 
-@app.route('/d/')
+@app.route('/download/')
 def loadMusic():
     '''
     Download music from youtube and convert to mp3
@@ -44,9 +46,7 @@ def loadMusic():
     except Exception as error:
         print(error)
         return f"[ERRO] Aquivo não baixado! Tente novamente"
-    
-    else:
-        print('DONE!, Sending your file...')
+
 
 if __name__ == "__main__":
     app.run()
