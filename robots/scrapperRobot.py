@@ -20,16 +20,11 @@ def getLinkfromYoutube(nameOfVideo):
     driver = webdriver.Chrome(chrome_options=settings, executable_path=chrome_path)
 
     driver.get(f'https://www.youtube.com/results?search_query={nameOfVideo}')
-    sleep(10)
+    sleep(5)
 
     #click on video
-    try:
-        video = driver.find_element_by_xpath('//*[@id="dismissable"]')
-        video.click()
-
-    except Exception as error:
-        print(error)
-        return "[ERRO] algo aconteceu :("
+    video = driver.find_element_by_xpath('//*[@id="dismissable"]')
+    video.click()
 
     url_video = driver.current_url
 
