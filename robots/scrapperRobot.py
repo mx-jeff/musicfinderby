@@ -23,8 +23,13 @@ def getLinkfromYoutube(nameOfVideo):
     sleep(10)
 
     #click on video
-    video = driver.find_element_by_xpath('//*[@id="dismissable"]')
-    video.click()
+    try:
+        video = driver.find_element_by_xpath('//*[@id="dismissable"]')
+        video.click()
+
+    except Exception as error:
+        print(error)
+        return "[ERRO] algo aconteceu :("
 
     url_video = driver.current_url
 
