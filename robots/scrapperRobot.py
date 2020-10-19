@@ -12,7 +12,7 @@ def getLinkfromYoutube(nameOfVideo):
     settings = Options()
     settings.binary_location = os.environ.get('GOOGLE_CHROME_BIN')
     settings.add_argument('--disable-dev-shm-usage')
-    # settings.add_argument('--headless')
+    settings.add_argument('--headless')
     settings.add_argument('--no-sandbox')
     settings.add_experimental_option("detach", True)
     chrome_path = os.environ.get('CHROMEDRIVER_PATH') or "C:/Selenium/chromedriver.exe"
