@@ -23,8 +23,7 @@ def searchMusic(music):
     '''
     url = searchUrl(music)
     print('Url video: ', url)
-    # return redirect(url_for("loadMusic", url=url))
-    return 'works!'
+    return redirect(url_for("loadMusic", url=url))
 
 
 @app.route('/download/')
