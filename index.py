@@ -22,8 +22,9 @@ def searchMusic(music):
     :return: target video url
     '''
     url = searchUrl(music)
-    print(url)
-    return redirect(url_for("loadMusic", url=url))
+    print('Url video: ', url)
+    # return redirect(url_for("loadMusic", url=url))
+    return 'works!'
 
 
 @app.route('/download/')
@@ -49,4 +50,4 @@ def loadMusic():
 
 
 if __name__ == "__main__":
-    app.run()
+    app.run(debug=True)

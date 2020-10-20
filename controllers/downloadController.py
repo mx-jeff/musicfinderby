@@ -4,7 +4,7 @@ from robots.reponseMusicRobot import returnMusic
 
 import os
 
-dev = False
+dev = True
 
 
 def downloadToYoutube(link):
