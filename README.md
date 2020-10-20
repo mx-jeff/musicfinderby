@@ -27,3 +27,16 @@ Programa que extrai videos para transforma-los em MP3
  ```python
     python index.py
  ```
+
+- acesse este [link](https://musicfinderby.herokuapp.com/) para demonstração  
+
+### Rotas
+
+  - /search: busca o vídeo com base no nome e estrai o link para a rota '/download'
+  ```link
+   https://musicfinderby.herokuapp.com/search/michael-jackson   
+```
+  - /download: baixa o video com base no link
+  ```link
+   https://musicfinderby.herokuapp.com/search/michael-jackson
+```

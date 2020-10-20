@@ -2,6 +2,5 @@
 
 - [ ] format link of search bot
 - [ ] verify request timed out
-- [x] verify the youtube-dl erros
-    - [ ] verify selenium error
+- [x] verify selenium link errors
 - [ ] verify cache in /d/ endpoint
