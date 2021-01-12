@@ -6,3 +6,4 @@ dependencies
 *.mp3
 .ngrok.exe
 frontend
+chromedriver.exe
