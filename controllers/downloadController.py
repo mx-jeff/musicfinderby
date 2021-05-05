@@ -15,7 +15,6 @@ def downloadToYoutube(link):
     if dev:
         print('moving file...')
         music = os.listdir('./audio')
-        print(f'[FILE] {music}')
         moveFile()
         print('[DONE] file moved')
 

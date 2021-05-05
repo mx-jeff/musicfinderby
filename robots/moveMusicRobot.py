@@ -6,7 +6,7 @@ def moveFile():
     for directory in actualDir:
         if directory.endswith('.mp3'):
             print(f'moving {directory}...')
-            os.system(f'mv "{directory}" audio')
+            os.rename(directory, f"audio/{directory}")
             
             print(directory + "Selected")
             print('Done!')
