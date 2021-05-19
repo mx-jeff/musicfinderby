@@ -5,7 +5,7 @@ class Music:
         self.crawler_name = crawler_name
 
     def find(self,pattern='*.mp3', path='./'):
-        print(f"{self.crawler_name} Escaneado música...")
+        # print(f"{self.crawler_name} Escaneado música...")
         try:
             result = []
             for root, dirs, files in os.walk(path):
@@ -13,11 +13,12 @@ class Music:
                     if fnmatch.fnmatch(name, pattern):
                         result.append(os.path.join(root, name))
             
-            print(f"{self.crawler_name} {result[0]} Encontrada!")
+            # print(f"{self.crawler_name} {result[0]} Encontrada!")
             return result[0]
         
         except IndexError:
-            print(f"{self.crawler_name} Sem músicas encontradas!")
+            # print(f"{self.crawler_name} Sem músicas encontradas!")
+            pass
   
     def remove(self):
         music = self.find()

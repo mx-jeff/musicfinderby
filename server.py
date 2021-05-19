@@ -1,17 +1,46 @@
-from src.app import handleMusic
-from src.utils import tempo_estimado, timeit
+from src.app import Musicfinderby
+from flask import Flask, send_file, url_for, redirect, request
+from flask_cors import CORS
 
-def main():
-    handleMusic()
+app = Flask(__name__)
+CORS(app)
 
+core = Musicfinderby()
+
+@app.route('/')
+def index():
+    return "Welcome! Use the '/search/' and type the name of your music or type '/download/' if you have the youtube link "
+
+
+@app.route('/search/<string:music>')
+def searchMusic(music):
+    '''
+    => search music's link on youtube and call "loadMusic" to download then
+    Ex: host/s/music-name
+
+    :param music: <string> Select music of wish
+    :return: target video url
+    '''
+    url = core.search_url(music)
+    print('Url video: ', url)
+    return redirect(url_for("loadMusic", url=url))
+
+
+@app.route('/download/')
+def loadMusic():
+    '''
+    Download music from youtube and convert to mp3
+    Ex: host/d?url="video-from-youtube"
+
+    params: <string:music>: specifies music for download
+    return: mp3 file
+
+    '''
+    targetLink = request.args.get('url')
+    filename = core.download_and_convert(targetLink)
+
+    # find where the file is it
+    return send_file(filename, as_attachment=True, mimetype='audio/mpeg', cache_timeout=-1)
 
 if __name__ == "__main__":
-    start = timeit.default_timer()
-    
-    try:
-        main()
-
-        tempo_estimado(start)
-
-    except KeyboardInterrupt:
-        tempo_estimado(start)
+    app.run()

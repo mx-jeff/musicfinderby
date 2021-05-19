@@ -13,14 +13,17 @@ def validade_input(crawler_name):
     return music
     
 
-def handleMusic():
+class Musicfinderby:
     crawler_name = "[Musicfinderby]"
-    print(f'{crawler_name} Iniciando crawler...')
-    name_music = validade_input(crawler_name)
-
-    link = scrapper_youtube_robot(crawler_name, name_music)
-    download_and_convert_video_to_mp3(crawler_name, link)
     
-    file_music = Music(crawler_name)
-    music = file_music.find()    
-    file_music.remove()
+    def __init__(self) -> None:
+        self.file_music = Music(self.crawler_name)
+        print(f'{self.crawler_name} Iniciando crawler...')
+
+    def search_url(self, name_music):
+        return scrapper_youtube_robot(self.crawler_name, name_music)
+    
+    def download_and_convert(self, link):
+        self.file_music.remove()
+        download_and_convert_video_to_mp3(self.crawler_name, link)
+        return self.file_music.find()    
