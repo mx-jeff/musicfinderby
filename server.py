@@ -1,19 +1,18 @@
-from src.app import Musicfinderby
+from src.controller import Musicfinderby
+from src.robots.worker import Worker
 from src.utils import log
-from flask import Flask, send_file, url_for, redirect, request
-from flask_cors import CORS
+from flask import Flask, Blueprint, send_file, url_for, redirect, request
 
-app = Flask(__name__)
-CORS(app)
+web = Blueprint('web', __name__)
 
 core = Musicfinderby()
 
-@app.route('/')
+@web.route('/')
 def index():
     return "Welcome! Use the '/search/' and type the name of your music or type '/download/' if you have the youtube link "
 
 
-@app.route('/search/<string:music>')
+@web.route('/search/<string:music>')
 def searchMusic(music):
     '''
     => search music's link on youtube and call "loadMusic" to download then
@@ -32,7 +31,7 @@ def searchMusic(music):
         raise
 
 
-@app.route('/download/')
+@web.route('/download/')
 def loadMusic():
     '''
     Download music from youtube and convert to mp3
@@ -44,15 +43,15 @@ def loadMusic():
     '''
     try:
         targetLink = request.args.get('url')
-        filename = core.download_and_convert(targetLink)
-
+        # filename = core.download_and_convert(targetLink)
+        Worker(targetLink)
+        # send_file(filename, as_attachment=True, mimetype='audio/mpeg', cache_timeout=-1)
         # find where the file is it
-        return send_file(filename, as_attachment=True, mimetype='audio/mpeg', cache_timeout=-1)
+        return "Baixando arquivo, aguarde.."
     
     except Exception as error:
         log(error)
         raise
 
-if __name__ == "__main__":
-    app.run()
+
 
