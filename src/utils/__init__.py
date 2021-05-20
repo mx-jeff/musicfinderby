@@ -1,5 +1,6 @@
 import os
 from time import sleep, gmtime, strftime
+from datetime import datetime
 import timeit
 from selenium import webdriver
 from selenium.webdriver.chrome.options import Options
@@ -94,3 +95,12 @@ def scroll(driver):
         if new_height == last_height:
             break
         last_height = new_height
+
+
+def log(msg):
+    today = datetime.now()
+
+    date_time = today.strftime("%d/%m/%Y %H:%M:%S")
+
+    with open('log.txt', 'a') as log:
+        log.writelines(f"{date_time} - {msg}\n")
