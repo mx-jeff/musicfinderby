@@ -1,10 +1,10 @@
 from src.controller import Musicfinderby
 from src.robots.worker import Worker
 from src.utils import log
-from flask import Flask, Blueprint, send_file, url_for, redirect, request
+from app import create_server
+from flask import url_for, redirect, request
 
-web = Blueprint('web', __name__)
-
+web = create_server()
 core = Musicfinderby()
 
 @web.route('/')
