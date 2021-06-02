@@ -27,3 +27,6 @@ class Musicfinderby:
         self.file_music.remove()
         download_and_convert_video_to_mp3(self.crawler_name, link)
         return self.file_music.find()    
+
+    def find_music(self):
+        return self.file_music.find()

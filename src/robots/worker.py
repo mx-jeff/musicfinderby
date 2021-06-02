@@ -15,9 +15,9 @@ class Worker:
         thread.start()
     
     def run(self):
-        print(f'Spawing a thread for: {self.filename}')
-        filename = self.core.download_and_convert(self.filename)
-        # find where the file is it
-
-        with self.app.app_context():
+        with self.app.test_request_context():
+            print(f'Spawing a thread for: {self.filename}')
+            filename = self.core.download_and_convert(self.filename)
+            
+            # find where the file is it
             return send_file(filename, as_attachment=True, mimetype='audio/mpeg', cache_timeout=-1)
