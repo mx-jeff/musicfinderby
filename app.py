@@ -9,6 +9,7 @@ from factory import create_app
 core = Musicfinderby()
 app = create_app()
 
+
 @app.route('/')
 def index():
     return "Welcome! Use the '/search/' and type the name of your music or type '/download/' if you have the youtube link and '/music' to return music "
