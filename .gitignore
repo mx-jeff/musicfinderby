@@ -8,3 +8,4 @@ dependencies
 frontend
 chromedriver.exe
 old/
+log.txt

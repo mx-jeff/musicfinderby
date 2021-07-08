@@ -47,8 +47,8 @@ def loadMusic():
     try:
         targetLink = request.args.get('url')
         # filename = core.download_and_convert(targetLink)
-        filename = Worker(targetLink).run()
-        return send_file(filename, as_attachment=True, mimetype='audio/mpeg', cache_timeout=-1)
+        Worker(targetLink)
+        # send_file(filename, as_attachment=True, mimetype='audio/mpeg', cache_timeout=-1)
         # find where the file is it
         return "Baixando arquivo, aguarde alguns instantes.."
     
