@@ -23,12 +23,12 @@ class Worker:
             return 'Arquivo baixado'
 
     def run(self):
-        # thread = threading.Thread(target=self.donwload ,args=())
-        # thread.daemon = True
-        # thread.start()
+        thread = threading.Thread(target=self.donwload ,args=())
+        thread.daemon = True
+        thread.start()
 
-        with concurrent.futures.ThreadPoolExecutor() as executor:
-            future = executor.submit(self.donwload)
-            return_value = future.result()
-            print('> Status 1: ', return_value)
-            return return_value
+        # with concurrent.futures.ThreadPoolExecutor() as executor:
+        #     future = executor.submit(self.donwload)
+        #     return_value = future.result()
+        #     print('> Status 1: ', return_value)
+        #     return return_value
