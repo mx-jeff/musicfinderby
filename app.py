@@ -1,4 +1,5 @@
 from flask import Flask, Blueprint
+from flask.helpers import flash
 from flask_cors import CORS
 from src.controller import Musicfinderby
 from src.robots.worker import Worker
@@ -47,10 +48,12 @@ def loadMusic():
     try:
         targetLink = request.args.get('url')
         # filename = core.download_and_convert(targetLink)
-        Worker(targetLink)
+        result = Worker(targetLink).run()
+        print('> status 2: ', result)
         # send_file(filename, as_attachment=True, mimetype='audio/mpeg', cache_timeout=-1)
         # find where the file is it
-        return "Baixando arquivo, aguarde alguns instantes.."
+        # return "Baixando arquivo, aguarde alguns instantes.."
+        return redirect(url_for('getMusic'))
     
     except Exception as error:
         log(error)

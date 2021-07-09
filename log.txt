@@ -1,3 +1,11 @@
 08/07/2021 12:23:15 - __init__() should return None, not 'str'
 08/07/2021 12:29:06 - __init__() should return None, not 'str'
 08/07/2021 12:30:27 - __init__() should return None, not 'str'
+08/07/2021 13:06:32 - name 'flash' is not defined
+08/07/2021 13:10:13 - The session is unavailable because no secret key was set.  Set the secret_key on the application to something unique and secret.
+08/07/2021 13:13:57 - The session is unavailable because no secret key was set.  Set the secret_key on the application to something unique and secret.
+08/07/2021 13:17:35 - The session is unavailable because no secret key was set.  Set the secret_key on the application to something unique and secret.
+08/07/2021 22:17:59 - 'Worker' object has no attribute 'download'
+08/07/2021 22:22:10 - 'Worker' object has no attribute 'download'
+08/07/2021 22:29:29 - [WinError 10054] Foi forçado o cancelamento de uma conexão existente pelo host remoto
+08/07/2021 23:02:50 - 'NoneType' object is not subscriptable
