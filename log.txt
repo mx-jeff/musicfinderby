@@ -9,3 +9,8 @@
 08/07/2021 22:22:10 - 'Worker' object has no attribute 'download'
 08/07/2021 22:29:29 - [WinError 10054] Foi forçado o cancelamento de uma conexão existente pelo host remoto
 08/07/2021 23:02:50 - 'NoneType' object is not subscriptable
+21/08/2021 00:11:21 - No name provided for attachment. Either set 'download_name' or pass a path instead of a file.
+21/08/2021 00:11:42 - Message: session not created: This version of ChromeDriver only supports Chrome version 90
+Current browser version is 92.0.4515.159 with binary path C:\Program Files\Google\Chrome\Application\chrome.exe
+
+21/08/2021 00:16:30 - No name provided for attachment. Either set 'download_name' or pass a path instead of a file.

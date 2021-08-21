@@ -48,7 +48,7 @@ def setSelenium(console=True):
     chrome_options.add_experimental_option("excludeSwitches", ["enable-logging"])
     prefs = {"profile.default_content_setting_values.notifications" : 2}
     chrome_options.add_experimental_option("prefs",prefs)
-    path = os.environ.get('CHROMEDRIVER_PATH') or "./chromedriver.exe" 
+    path = os.environ.get('CHROMEDRIVER_PATH') or "C:\Selenium\chromedriver.exe" 
     
     return webdriver.Chrome(chrome_options=chrome_options, executable_path=path, service_log_path='NUL')
 

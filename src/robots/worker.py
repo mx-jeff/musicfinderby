@@ -8,27 +8,20 @@ import concurrent.futures
 
 
 class Worker:
-    def __init__(self, filename):
-        self.filename = filename
+    def __init__(self):
         self.core = Musicfinderby()
         self.app = create_app()
+        self.thread = threading.Thread()
         
-    def donwload(self):
+    def donwload(self, filename):
         with self.app.test_request_context():
-            print(f'Spawing a thread for: {self.filename}')
-            self.core.download_and_convert(self.filename)
-            
-            # find where the file is it
-            # return send_file(filename, as_attachment=True, mimetype='audio/mpeg', cache_timeout=-1)
-            return 'Arquivo baixado'
+            print(f'Spawing a thread for: {filename}')
+            self.core.download_and_convert(filename)
 
-    def run(self):
-        thread = threading.Thread(target=self.donwload ,args=())
-        thread.daemon = True
-        thread.start()
+    def run(self, filename):
+        self.thread = threading.Thread(target=self.donwload, args=[filename])
+        self.thread.daemon = True
+        self.thread.start()
 
-        # with concurrent.futures.ThreadPoolExecutor() as executor:
-        #     future = executor.submit(self.donwload)
-        #     return_value = future.result()
-        #     print('> Status 1: ', return_value)
-        #     return return_value
+    def done(self):
+        return self.thread.is_alive()

@@ -1,0 +1,5 @@
+GET http://localhost:5000/search/black sabbath - zero to hero
+
+###
+
+GET http://localhost:5000/music

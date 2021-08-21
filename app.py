@@ -1,3 +1,4 @@
+from time import sleep
 from flask import Flask, Blueprint
 from flask.helpers import flash
 from flask_cors import CORS
@@ -9,6 +10,7 @@ from factory import create_app
 
 core = Musicfinderby()
 app = create_app()
+downloader = Worker()
 
 
 @app.route('/')
@@ -47,13 +49,8 @@ def loadMusic():
     '''
     try:
         targetLink = request.args.get('url')
-        # filename = core.download_and_convert(targetLink)
-        Worker(targetLink).run()
-        # print('> status 2: ', result)
-        # send_file(filename, as_attachment=True, mimetype='audio/mpeg', cache_timeout=-1)
-        # find where the file is it
-        return "Baixando arquivo, aguarde alguns instantes.."
-        # return redirect(url_for('getMusic'))
+        downloader.run(targetLink)
+        return redirect(url_for('getMusic'))
     
     except Exception as error:
         log(error)
@@ -65,13 +62,19 @@ def getMusic():
     '''
     Return music file if exists
     '''
-    try:
-        music = core.find_music()
-        return send_file(music, as_attachment=True, mimetype='audio/mpeg', cache_timeout=-1)
+    if not downloader.done():
+        try:
+            music = core.find_music()
+            return send_file(music, as_attachment=True, mimetype='audio/mpeg', cache_timeout=-1)
 
-    except Exception as error:
-        log(error)
-        return "Música não disponível ou algum erro aconteceu!"
+        except Exception as error:
+            log(error)
+            return "Música não disponível ou algum erro aconteceu!"
+
+
+    else:
+        sleep(10)
+        return redirect(url_for('getMusic'))
 
 if __name__ == "__main__":
     app.run()
