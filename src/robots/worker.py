@@ -1,10 +1,6 @@
 import threading
-from flask import send_file
-from flask.helpers import url_for
-from werkzeug.utils import redirect
 from src.controller import Musicfinderby
 from factory import create_app
-import concurrent.futures 
 
 
 class Worker:
