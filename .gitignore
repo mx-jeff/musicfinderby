@@ -9,3 +9,4 @@ frontend
 chromedriver.exe
 old/
 log.txt
+client.http

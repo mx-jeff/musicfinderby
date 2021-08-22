@@ -48,7 +48,11 @@ def loadMusic():
     '''
     try:
         targetLink = request.args.get('url')
-        executor.submit_stored('download_music', core.download_and_convert, targetLink)        
+        try:
+            executor.submit_stored('download_music', core.download_and_convert, targetLink)
+        except ValueError:
+            pass 
+               
         return redirect(url_for('getMusic'))
     
     except Exception as error:
@@ -61,7 +65,6 @@ def getMusic():
     '''
     Return music file if exists
     '''
-    print('Status: (getMusic)', downloader.done())
     if executor.futures.done('download_music'):
         try:
             music = core.find_music()
