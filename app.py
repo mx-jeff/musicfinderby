@@ -5,11 +5,14 @@ from src.robots.worker import Worker
 from src.utils import log
 from flask import url_for, redirect, request, send_file
 from factory import create_app
+import random
 
 core = Musicfinderby()
 app = create_app()
 downloader = Worker()
 executor = Executor(app)
+
+name = f'Download-{random.random}'
 
 
 @app.route('/')
@@ -49,10 +52,10 @@ def loadMusic():
     try:
         targetLink = request.args.get('url')
         try:
-            executor.submit_stored('download_music', core.download_and_convert, targetLink)
+            executor.submit_stored(name, core.download_and_convert, targetLink)
         except ValueError:
             pass 
-               
+
         return redirect(url_for('getMusic'))
     
     except Exception as error:
@@ -65,7 +68,7 @@ def getMusic():
     '''
     Return music file if exists
     '''
-    if executor.futures.done('download_music'):
+    if executor.futures.done(name):
         try:
             music = core.find_music()
             return send_file(music, as_attachment=True, mimetype='audio/mpeg', cache_timeout=-1)
