@@ -51,11 +51,8 @@ def loadMusic():
     '''
     try:
         targetLink = request.args.get('url')
-        try:
-            executor.submit_stored(name, core.download_and_convert, targetLink)
-        except ValueError:
-            pass 
-
+        executor.submit_stored(name, core.download_and_convert, targetLink)
+        
         return redirect(url_for('getMusic'))
     
     except Exception as error:
