@@ -48,7 +48,7 @@ def loadMusic():
     '''
     try:
         targetLink = request.args.get('url')
-        executor.submit(core.download_and_convert, targetLink)        
+        executor.submit_stored('download_music', core.download_and_convert, targetLink)        
         return redirect(url_for('getMusic'))
     
     except Exception as error:
@@ -62,7 +62,7 @@ def getMusic():
     Return music file if exists
     '''
     print('Status: (getMusic)', downloader.done())
-    if not status['pending']:
+    if executor.futures.done('download_music'):
         try:
             music = core.find_music()
             return send_file(music, as_attachment=True, mimetype='audio/mpeg', cache_timeout=-1)
