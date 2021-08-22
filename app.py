@@ -50,6 +50,7 @@ def loadMusic():
     try:
         targetLink = request.args.get('url')
         downloader.run(targetLink)
+        print('Status (Load Music): ', downloader.done())
         return redirect(url_for('getMusic'))
     
     except Exception as error:
@@ -62,6 +63,7 @@ def getMusic():
     '''
     Return music file if exists
     '''
+    print('Status: (getMusic)', downloader.done())
     if not downloader.done():
         try:
             music = core.find_music()
