@@ -15,7 +15,7 @@ executor = Executor(app)
 #config
 app.config['EXECUTOR_MAX_WORKERS'] = 1
 app.config['EXECUTOR_TYPE'] = 'thread'
-NAME = f"music"
+NAME = "music"
 
 
 @app.route('/')

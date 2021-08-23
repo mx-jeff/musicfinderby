@@ -1,5 +1,6 @@
 from src.robots.youtube_scrapper_robot import scrapper_youtube_robot
 from src.robots.handle_video_youtube import download_and_convert_video_to_mp3
+from src.robots.music_file import Music
 
 
 def validade_input(crawler_name):
@@ -16,6 +17,7 @@ class Musicfinderby:
     crawler_name = "[Musicfinderby]"
     
     def __init__(self) -> None:
+        self.file_music = Music(self.crawler_name)
         print(f'{self.crawler_name} Iniciando crawler...')
 
     def search_url(self, name_music):
