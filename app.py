@@ -1,5 +1,6 @@
 from time import sleep
 from flask_executor import Executor
+from robots.music_file import Music
 from src.controller import Musicfinderby
 from src.robots.worker import Worker
 from src.utils import log
@@ -12,7 +13,10 @@ app = create_app()
 downloader = Worker()
 executor = Executor(app)
 
-name = f'Download-{random.random}'
+#config
+app.config['EXECUTOR_MAX_WORKERS'] = 1
+app.config['EXECUTOR_TYPE'] = 'thread'
+NAME = f"downloader-{random.randint(random(10000))}"
 
 
 @app.route('/')
@@ -51,7 +55,8 @@ def loadMusic():
     '''
     try:
         targetLink = request.args.get('url')
-        executor.submit_stored(name, core.download_and_convert, targetLink)
+        Music().remove()
+        executor.submit_stored(NAME, core.download_and_convert, targetLink)
         
         return redirect(url_for('getMusic'))
     
@@ -65,8 +70,9 @@ def getMusic():
     '''
     Return music file if exists
     '''
-    if executor.futures.done(name):
+    if executor.futures.done(NAME):
         try:
+            executor.futures.pop(NAME)
             music = core.find_music()
             return send_file(music, as_attachment=True, mimetype='audio/mpeg', cache_timeout=-1)
 

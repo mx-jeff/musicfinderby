@@ -1,7 +1,7 @@
 import os, fnmatch
 
 class Music:
-    def __init__(self, crawler_name) -> None:
+    def __init__(self, crawler_name="[Musicfinderby]") -> None:
         self.crawler_name = crawler_name
 
     def find(self,pattern='*.mp3', path='./'):
