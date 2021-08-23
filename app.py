@@ -76,6 +76,7 @@ def getMusic():
             return send_file(music, as_attachment=True, mimetype='audio/mpeg', cache_timeout=-1)
 
         except Exception as error:
+            print(error)
             log(error)
             return "Música não disponível ou algum erro aconteceu!"
 
