@@ -6,7 +6,6 @@ from src.robots.worker import Worker
 from src.utils import log
 from flask import url_for, redirect, request, send_file
 from factory import create_app
-import random
 
 core = Musicfinderby()
 app = create_app()
@@ -16,7 +15,7 @@ executor = Executor(app)
 #config
 app.config['EXECUTOR_MAX_WORKERS'] = 1
 app.config['EXECUTOR_TYPE'] = 'thread'
-NAME = f"downloader-{random.randint(random(10000))}"
+NAME = f"music"
 
 
 @app.route('/')
