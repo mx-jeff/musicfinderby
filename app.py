@@ -1,6 +1,6 @@
 from time import sleep
 from flask_executor import Executor
-from robots.music_file import Music
+from src.robots.music_file import Music
 from src.controller import Musicfinderby
 from src.robots.worker import Worker
 from src.utils import log
