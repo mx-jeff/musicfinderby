@@ -2,14 +2,12 @@ from time import sleep
 from flask_executor import Executor
 from src.robots.music_file import Music
 from src.controller import Musicfinderby
-from src.robots.worker import Worker
 from src.utils import log
 from flask import url_for, redirect, request, send_file
 from factory import create_app
 
 core = Musicfinderby()
 app = create_app()
-downloader = Worker()
 executor = Executor(app)
 
 #config
