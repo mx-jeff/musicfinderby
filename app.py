@@ -13,6 +13,7 @@ executor = Executor(app)
 #config
 app.config['EXECUTOR_MAX_WORKERS'] = 1
 app.config['EXECUTOR_TYPE'] = 'thread'
+app.config['EXECUTOR_PROPAGATE_EXCEPTIONS'] = True
 NAME = "music"
 
 
@@ -71,11 +72,11 @@ def getMusic():
         try:
             future = executor.futures.pop(NAME)
             music = core.find_music()
-            print(future.result())
+            print('Future: ', future.result())
             return send_file(music, as_attachment=True, mimetype='audio/mpeg', cache_timeout=-1)
 
         except Exception as error:
-            print(error)
+            print('Error: ', error)
             log(error)
             return "Música não disponível ou algum erro aconteceu!"
 
