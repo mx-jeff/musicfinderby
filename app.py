@@ -9,8 +9,8 @@ from factory import create_app
 
 core = Musicfinderby()
 app = create_app()
-CORS(app, expose_headers=["Content-Disposition"])
 executor = Executor(app)
+CORS(app, expose_headers=["Content-Disposition"])
 
 #config
 app.config['EXECUTOR_MAX_WORKERS'] = 1
