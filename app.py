@@ -1,5 +1,6 @@
 from time import sleep
 from flask_executor import Executor
+from flask_cors import CORS
 from src.robots.music_file import Music
 from src.controller import Musicfinderby
 from src.utils import log
@@ -8,6 +9,7 @@ from factory import create_app
 
 core = Musicfinderby()
 app = create_app()
+CORS(app, expose_headers=["Content-Disposition"])
 executor = Executor(app)
 
 #config
