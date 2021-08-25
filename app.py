@@ -10,7 +10,7 @@ from factory import create_app
 core = Musicfinderby()
 app = create_app()
 executor = Executor(app)
-CORS(app, expose_headers=["Content-Disposition"], resources={r"/*": {"origins": "*"}}) # 
+CORS(app, expose_headers=["Content-Disposition"], support_credentials=True) # 
 
 #config
 app.config['EXECUTOR_MAX_WORKERS'] = 1
