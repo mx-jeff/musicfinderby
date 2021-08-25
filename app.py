@@ -1,6 +1,7 @@
 from time import sleep
 from flask_executor import Executor
 from flask_cors import CORS
+from flask_cors import cross_origin
 from src.robots.music_file import Music
 from src.controller import Musicfinderby
 from src.utils import log
@@ -45,6 +46,7 @@ def searchMusic(music):
 
 
 @app.route('/download/')
+@cross_origin()
 def loadMusic():
     '''
     Download music from youtube and convert to mp3
@@ -67,6 +69,7 @@ def loadMusic():
 
 
 @app.route('/music')
+@cross_origin()
 def getMusic():
     '''
     Return music file if exists
