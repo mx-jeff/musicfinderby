@@ -27,6 +27,7 @@ def index():
 
 
 @app.route('/search/<string:music>')
+@cross_origin
 def searchMusic(music):
     '''
     => search music's link on youtube and call "loadMusic" to download then
