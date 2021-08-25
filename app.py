@@ -10,7 +10,7 @@ from factory import create_app
 core = Musicfinderby()
 app = create_app()
 executor = Executor(app)
-CORS(app) # expose_headers=["Content-Disposition"]
+CORS(app, expose_headers=["Content-Disposition"], resources={r"/*": {"origins": "*"}}) # 
 
 #config
 app.config['EXECUTOR_MAX_WORKERS'] = 1
@@ -86,13 +86,6 @@ def getMusic():
     else:
         sleep(10)
         return redirect(url_for('getMusic'))
-
-
-@app.after_request
-def after_request(response):
-    header = response.headers
-    header['Access-Control-Allow-Origin'] = '*'
-    return response
 
 
 if __name__ == "__main__":
