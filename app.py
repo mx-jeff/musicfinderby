@@ -11,7 +11,7 @@ from factory import create_app
 core = Musicfinderby()
 app = create_app()
 executor = Executor(app)
-CORS(app, expose_headers=["Content-Disposition"], support_credentials=True) # 
+CORS(app, expose_headers=["Content-Disposition"]) # 
 
 #config
 app.config['EXECUTOR_MAX_WORKERS'] = 1
@@ -26,7 +26,6 @@ def index():
 
 
 @app.route('/search/<string:music>')
-@cross_origin(support_credentials=True)
 def searchMusic(music):
     '''
     => search music's link on youtube and call "loadMusic" to download then
@@ -46,7 +45,6 @@ def searchMusic(music):
 
 
 @app.route('/download/')
-@cross_origin(support_credentials=True)
 def loadMusic():
     '''
     Download music from youtube and convert to mp3
@@ -69,7 +67,6 @@ def loadMusic():
 
 
 @app.route('/music')
-@cross_origin(support_credentials=True)
 def getMusic():
     '''
     Return music file if exists
