@@ -75,8 +75,9 @@ def getMusic():
         try:
             future = executor.futures.pop(NAME)
             music = core.find_music()
-            print('Future: ', future.result())
-            return send_file(music, as_attachment=True, mimetype='audio/mpeg', cache_timeout=-1)
+            filename = future.result()
+            print('Future: ', filename)
+            return send_file(music, as_attachment=True,  attachment_filename=filename, mimetype='audio/mpeg', cache_timeout=-1)
 
         except Exception as error:
             print('Error: ', error)
