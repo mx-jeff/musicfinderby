@@ -3,21 +3,21 @@ import youtube_dl
 
 
 def download_and_convert_video_to_mp3(crawler_name, url):
-    try:
-        ydl_opts = {
-            'format': 'bestaudio/best',
-            'postprocessors': [{
-                'key': 'FFmpegExtractAudio',
-                'preferredcodec': 'mp3',
-                'preferredquality': '192',
-            }],
-        }
+    ydl_opts = {
+        'format': 'bestaudio/best',
+        'postprocessors': [{
+            'key': 'FFmpegExtractAudio',
+            'preferredcodec': 'mp3',
+            'preferredquality': '192',
+        }],
+    }
 
-        with youtube_dl.YoutubeDL(ydl_opts) as ydl:
+    with youtube_dl.YoutubeDL(ydl_opts) as ydl:
+        try:
+            ydl.cache.remove()
             ydl.download([url])
+        except youtube_dl.DownloadError as error:
+            print('[ERRO]', error)
+            return
 
-        print(str(f'{crawler_name} done!').upper())
-
-    except Exception as error:
-        print(f'{crawler_name} Algo deu errado :(')
-        print(f'{crawler_name} Erro: {error}')
+    print(str(f'{crawler_name} done!').upper())
