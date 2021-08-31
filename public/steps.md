@@ -1,6 +1,6 @@
 = [ ] stylize buttons
-- [ ] stylize buttons (Success, error and wait)
-- [ ] (optional) add backgroud image
+- [x] stylize buttons (Success, error and wait)
+- [ ] (optional) add background image
 - [ ] add api init
-- [ ] add content disposition
-- [ ] remove CORS error
+- [x] add content disposition
+- [x] remove CORS error

@@ -108,3 +108,24 @@ body {
 .mastfoot {
   color: rgba(255, 255, 255, .5);
 }
+
+/* 
+ * Custom styles
+ */
+
+.dz0-flex {
+  justify-content: center;
+  align-items: center;
+}
+
+.dz0-hidden{
+  visibility: hidden;
+}
+
+.dz0-box {
+  color: #333;
+  text-shadow: none;
+  background-color: #fff;
+  border: .05rem solid #fff;
+  font-weight: 500;
+}

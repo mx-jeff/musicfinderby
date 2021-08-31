@@ -14,15 +14,10 @@
 </head>
 
 <body class="text-center">
-    <div class="cover-container d-flex h-100 p-3 mx-auto flex-column">
-        <header class="masthead mb-auto">
+    <div class="cover-container d-flex h-100 p-3 mx-auto flex-column dz0-flex">
+        <header class="masthead mb-auto dz0-hidden">
             <div class="inner">
                 <h3 class="masthead-brand">Musicfinderby</h3>
-                <nav class="nav nav-masthead justify-content-center">
-                    <a class="nav-link active" href="#">Home</a>
-                    <!-- <a class="nav-link" href="#">Features</a>
-                    <a class="nav-link" href="#">Contact</a> -->
-                </nav>
             </div>
         </header>
 
@@ -35,20 +30,19 @@
                 <div class="form-group">
                     <label for="exampleInputEmail1"></label>
                     <input type="text" name='product' class="form-control" id="product" aria-describedby="emailHelp"
-                        placeholder="Link do produto">
+                        placeholder="Nome da música">
                 </div>
 
                 <button name="send" id="send" type="submit" class="btn btn-lg btn-secondary">Baixar</button>
 
             </form>
-            <!-- <a href="#" class="btn btn-lg btn-secondary">Baixar</a> -->
         </main>
 
-        <div class="row mt-3">
+        <div class="row mt-auto w-100">
             <div class="col-md-6 mx-auto" id="info"></div>
         </div>
 
-        <footer class="mastfoot mt-auto">
+        <footer class="mastfoot mt-5">
             <div class="inner">
                 <p>Made by <a href="https://github.com/DZ0Jeff">@DZ0Jeff</a>.</p>
             </div>
@@ -64,7 +58,7 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
         integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
         crossorigin="anonymous"></script>
-    <script src="./script.js"></script>
+    <script src="./script.js" type="module"></script>
 </body>
 
 </html>
