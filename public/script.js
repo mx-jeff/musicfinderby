@@ -2,7 +2,7 @@
 main functions
 @author: DZOJeff
 */
-import { validate_input, AJAX, alert_bootstrap, load, getFilename } from './function.js';
+import { validate_input, AJAX, alert_bootstrap, load_site, getFilename } from './function.js';
 
 
 window.onload = () => {
@@ -10,6 +10,8 @@ window.onload = () => {
     const input = document.querySelector('input#product')
     const form = document.querySelector('form')
     const info = document.querySelector('#info')
+
+    load_site(send, input, info)
 
     form.addEventListener('submit', async (e) => {
         e.preventDefault()

@@ -2,10 +2,19 @@
  * 
  * @returns log of start
  */
-export async function load(){
-    const response = await fetch('http://musicfinderby2.herokuapp.com')
-    if (response != 500) return
-    console.log('Bem vindo!')
+export async function load_site(send, input, info){
+    send.disabled = true
+    input.disabled = true
+    info.innerHTML = alert_bootstrap('Iniciando site...', 'alert dz0-box')
+
+    console.log('Carregando...')
+    const resp = await fetch('http://musicfinderby2.herokuapp.com')
+    if (resp.status == 500) return
+    if (resp.status == 200){
+        info.innerHTML = alert_bootstrap('Bem vindo! Digite uma música', 'alert btn-success dz0-f700')
+        send.disabled = false
+        input.disabled = false
+    }
 }
 
 /**
@@ -73,19 +82,20 @@ export async function AJAX(music, info, send){
         a.style.display = 'none';
         a.href = url;
         // the filename you want
-        a.download = filename
+        console.log(filename.replace('./','').replace(/"/g,''))
+        a.download = filename.replace('./','').replace(/"/g,'')
         document.body.appendChild(a);
         a.click();
         window.URL.revokeObjectURL(url);
         
         // UX
-        info.innerHTML = alert_bootstrap('<strong>Successo!</strong> Arquivo baixado.', 'alert dz0-box')
+        info.innerHTML = alert_bootstrap('<strong>Successo!</strong> Arquivo baixado.', 'alert btn-success dz0-f700')
         send.disabled = false
         send.innerHTML = "Extrair"
     }
     catch(err) {
         send.disabled = false
         send.innerHTML = "Extrair"
-        info.innerHTML = alert_bootstrap(err, 'alert dz0-box')
+        info.innerHTML = alert_bootstrap(err, 'alert btn-danger dz0-f700')
     }
 }
