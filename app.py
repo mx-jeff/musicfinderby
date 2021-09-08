@@ -1,7 +1,6 @@
 from time import sleep
 from flask_executor import Executor
 from flask_cors import CORS
-from flask_cors import cross_origin
 from src.robots.music_file import Music
 from src.controller import Musicfinderby
 from src.utils import log
@@ -76,6 +75,9 @@ def getMusic():
             future = executor.futures.pop(NAME)
             music = core.find_music()
             filename = future.result()
+            if future == None:
+                return 404
+
             print('Future: ', filename)
             return send_file(music, as_attachment=True,  attachment_filename=filename, mimetype='audio/mpeg', cache_timeout=-1)
 
