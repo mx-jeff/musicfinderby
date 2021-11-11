@@ -4,7 +4,7 @@ from flask_cors import CORS
 from src.robots.music_file import Music
 from src.controller import Musicfinderby
 from src.utils import log
-from flask import url_for, redirect, request, send_file
+from flask import url_for, redirect, request, send_file, abort
 from factory import create_app
 
 core = Musicfinderby()
@@ -76,7 +76,7 @@ def getMusic():
             music = core.find_music()
             filename = future.result()
             if future == None:
-                return 404
+                return abort(404)
 
             print('Future: ', filename)
             return send_file(music, as_attachment=True,  attachment_filename=filename, mimetype='audio/mpeg', cache_timeout=-1)
