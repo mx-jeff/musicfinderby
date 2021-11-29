@@ -14,6 +14,7 @@ CORS(app, expose_headers=["Content-Disposition"]) #
 
 #config
 app.config['EXECUTOR_MAX_WORKERS'] = 1
+app.config['EXECUTOR_TYPE'] = 'thread'
 app.config['EXECUTOR_PROPAGATE_EXCEPTIONS'] = True
 NAME = "music"
 
