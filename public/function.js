@@ -83,6 +83,10 @@ export async function AJAX(music, info, send){
         a.href = url;
         // the filename you want
         console.log(filename.replace('./','').replace(/"/g,''))
+        if (filename == "file") {
+            info.innerHTML = alert_bootstrap(err, 'alert btn-danger dz0-f700')
+            return
+        }
         a.download = filename.replace('./','').replace(/"/g,'')
         document.body.appendChild(a);
         a.click();
