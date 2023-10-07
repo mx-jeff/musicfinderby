@@ -39,7 +39,7 @@ soupsieve==2.3.1
 tomli==1.2.2
 trio==0.19.0
 trio-websocket==0.9.2
-urllib3==1.26.7
+urllib3==1.26.17
 Werkzeug==2.2.3
 wsproto==1.0.0
 youtube-dl==2021.6.6
