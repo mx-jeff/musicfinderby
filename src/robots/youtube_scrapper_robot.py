@@ -1,5 +1,7 @@
 from src.utils import setSelenium, init_parser
 
+from selenium.webdriver.common.by import By
+
 
 def scrapper_youtube_robot(crawler_name, music):
     driver = setSelenium()
@@ -7,7 +9,7 @@ def scrapper_youtube_robot(crawler_name, music):
     driver.get(f'https://www.youtube.com/results?search_query={music}')
     driver.implicitly_wait(220)
 
-    html = driver.find_element_by_tag_name('html')
+    html = driver.find_element(By.TAG_NAME, 'html')
     src = html.get_attribute('outerHTML')
 
     driver.quit()

@@ -1,0 +1,27 @@
+services:
+  musicfinderby:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    image: musicfinderby:local
+    container_name: musicfinderby
+    ports: 
+      - "5000:5000"
+    environment:
+      PYTHONUNBUFFERED: "1"
+      CHROMEDRIVER_PATH: /usr/bin/chromedriver
+    volumes:
+      - ./downloads:/app/downloads
+    restart: unless-stopped
+
+  frontend:
+    image: nginx:alpine
+    container_name: musicfinderby-frontend
+    ports:
+      - "8080:80"
+    volumes:
+      - ./public:/usr/share/nginx/html:ro
+      - ./nginx.conf:/etc/nginx/conf.d/default.conf:ro
+    depends_on:
+      - musicfinderby
+    restart: unless-stopped
